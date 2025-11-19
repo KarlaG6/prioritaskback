@@ -1,59 +1,97 @@
-// generator client {
-//   provider = "prisma-client-js"
-//   output   = "../generated/prisma"
-// }
-
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql" // o "mysql" según prefieras
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  tasks     Task[]
-  categories Category[]
-  createdAt DateTime @default(now())
+  id            String           @id @default(uuid())
+  name          String
+  email         String           @unique
+  password      String
+  role          Role             @default(USER)
+  tasks         Task[]
+  categories    Category[]
+  reminders     Reminder[]
+  notifications Notification[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
 }
 
 model Task {
-  id          Int        @id @default(autoincrement())
+  id          String     @id @default(uuid())
   title       String
   description String?
-  status      String      @default("pending")
-  priority    String      @default("normal")
+  status      String
   dueDate     DateTime?
-  userId      Int
-  user        User        @relation(fields: [userId], references: [id])
-  categories  TaskCategory[]
-  createdAt   DateTime    @default(now())
+  priority    String
+  createdAt   DateTime   @default(now())
+
+  userId      String
+  user        User       @relation(fields: [userId], references: [id])
+
+  categoryId  String?
+  category    Category?  @relation(fields: [categoryId], references: [id])
+
+  reminders   Reminder[]
 }
 
 model Category {
-  id          Int           @id @default(autoincrement())
-  name        String
-  color       String?
-  userId      Int
-  user        User          @relation(fields: [userId], references: [id])
-  tasks       TaskCategory[]
+  id        String   @id @default(uuid())
+  name      String
+  color     String
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  tasks     Task[]
 }
 
-model TaskCategory {
-  taskId     Int
-  categoryId Int
-  task       Task     @relation(fields: [taskId], references: [id])
-  category   Category @relation(fields: [categoryId], references: [id])
+model Reminder {
+  id         String      @id @default(uuid())
+  message    String
+  type       ReminderType
+  scheduleAt DateTime?
+  interval   ReminderInterval?
 
-  @@id([taskId, categoryId])
+  taskId     String?
+  task       Task?       @relation(fields: [taskId], references: [id])
+
+  userId     String
+  user       User        @relation(fields: [userId], references: [id])
+
+  notifications Notification[]
+}
+
+model Notification {
+  id         String    @id @default(uuid())
+  message    String
+  date       DateTime  @default(now())
+  read       Boolean   @default(false)
+
+  reminderId String?
+  reminder   Reminder? @relation(fields: [reminderId], references: [id])
+
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ReminderType {
+  ONE_TIME
+  RECURRING
+}
+
+enum ReminderInterval {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
 }
