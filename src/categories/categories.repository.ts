@@ -40,6 +40,19 @@ export class CategoriesRepository {
     }
   }
 
+  async getTasksByCategory(userId: string) {
+    try {
+      return await this.prisma.category.findMany({
+        where: { userId },
+        include: { tasks: true },
+      });
+
+    } catch (error) {
+      console.error('Error fetching tasks by categories by user:', error);
+      throw new InternalServerErrorException('Error obteniendo tareas por categorías');
+    }
+  }
+
   async findOne(id: string): Promise<Category> {
     const category = await this.prisma.category.findUnique({ where: { id } });
     if (!category) {

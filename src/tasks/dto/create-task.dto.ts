@@ -17,4 +17,8 @@ export class CreateTaskDto {
   dueDate?: Date | null;
 
   status: string;
+
+  @IsOptional()
+  @IsString()
+  categoryId?: string | null; 
 }

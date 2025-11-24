@@ -33,6 +33,14 @@ export class CategoriesService {
       throw new InternalServerErrorException('Error obteniendo categorías');
     }
   }
+  async getTasksByCategory(userId: string): Promise<Category[]> {
+    try {
+      return await this.repo.getTasksByCategory(userId);
+    } catch (error) {
+      console.error('Error fetching tasks by categories by user:', error);
+      throw new InternalServerErrorException('Error obteniendo tareas por categorías');
+    }
+  }
 
   async findOne(id: string): Promise<Category> {
     const category = await this.repo.findOne(id);

@@ -19,6 +19,7 @@ export class TasksService {
         status: 'pending',
         priority: dto.priority ?? 'normal',
         dueDate: dto.dueDate ? new Date(dto.dueDate) : null,
+        categoryId: dto.categoryId ?? null,
       });
     } catch (error) {
       console.error('Error en TasksService.create:', error);
