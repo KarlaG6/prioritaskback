@@ -531,6 +531,88 @@
           ]
         }
       }
+    },
+    {
+      "name": "Create task",
+      "id": "1afac30d-8ec7-4070-a6e5-957a6c200e19",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NGM2YTI4Zi1mOGM4LTRhYWItYTRhYS0yMzgxOGQwNDBiMjciLCJlbWFpbCI6ImthcmxhQGV4YW1wbGUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjM5MzY3MzgsImV4cCI6MTc2NDU0MTUzOH0.-wofLI4uUTyBcRzFl8OodtxLUZ0VFpQppgJ4gXZdV-k",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Mi primera tarea\",\r\n  \"description\": \"Algo importante\",\r\n  \"priority\": \"high\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "tasks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tasks by user",
+      "id": "9f9fbeb1-b958-4234-b55e-c5e6ae37bdf5",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NGM2YTI4Zi1mOGM4LTRhYWItYTRhYS0yMzgxOGQwNDBiMjciLCJlbWFpbCI6ImthcmxhQGV4YW1wbGUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjM5MzY3MzgsImV4cCI6MTc2NDU0MTUzOH0.-wofLI4uUTyBcRzFl8OodtxLUZ0VFpQppgJ4gXZdV-k",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Mi primera tarea\",\r\n  \"description\": \"Algo importante\",\r\n  \"priority\": \"high\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "tasks"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "786dd947-fb3b-40da-b2be-fdf7d1d36a51",
+      "key": "token",
+      "value": "",
+      "type": "default"
     }
   ]
 }

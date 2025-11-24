@@ -13,13 +13,12 @@ export class TasksService {
 
   async create(userId: string, dto: CreateTaskDto): Promise<Task> {
     try {
-      return await this.repo.create({
+      return await this.repo.create(userId, {
         title: dto.title,
         description: dto.description ?? null,
         status: 'pending',
         priority: dto.priority ?? 'normal',
         dueDate: dto.dueDate ? new Date(dto.dueDate) : null,
-        userId: userId,
       });
     } catch (error) {
       console.error('Error en TasksService.create:', error);

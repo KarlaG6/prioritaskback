@@ -14,26 +14,24 @@ import { CreateTaskDto } from './dto/create-task.dto';
 export class TaskRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateTaskDto): Promise<Task> {
+  async create(userId: string, dto: CreateTaskDto): Promise<Task> {
     try {
-      // log('Creating task for user ID:', data);
-      if (!data.userId) {
-        throw new BadRequestException('El userId es obligatorio');
-      }
       const userExists = await this.prisma.user.findUnique({
-        where: { id: data.userId },
+        where: { id: userId },
       });
-      if (!userExists) throw new NotFoundException('Usuario no encontrado');
+
+      if (!userExists) {
+        throw new NotFoundException('Usuario no encontrado');
+      }
+
       return await this.prisma.task.create({
         data: {
-          title: data.title,
-          description: data.description ?? null,
+          title: dto.title,
+          description: dto.description ?? null,
           status: 'pending',
-          priority: data.priority,
-          dueDate: data.dueDate ?? null,
-          user: {
-            connect: { id: data.userId },
-          },
+          priority: dto.priority ?? 'medium',
+          dueDate: dto.dueDate ? new Date(dto.dueDate) : null,
+          user: { connect: { id: userId } },
         },
       });
     } catch (error) {

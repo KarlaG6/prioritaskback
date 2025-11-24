@@ -20,7 +20,7 @@ export class TasksController {
 
   @Post()
   create(@Req() req, @Body() dto: CreateTaskDto) {
-    return this.tasksService.create(dto.userId, dto);
+    return this.tasksService.create(req.user.id, dto);
   }
 
   @Get()
