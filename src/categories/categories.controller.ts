@@ -28,7 +28,7 @@ export class CategoriesController {
   findAll(@Req() req) {
     return this.categoriesService.findAll(req.user.id);
   }
-  @Get()
+  @Get("tasks")
   getTasksByCategory(@Req() req) {
     return this.categoriesService.getTasksByCategory(req.user.id);
   }
