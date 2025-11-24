@@ -21,7 +21,7 @@ export class CategoriesController {
 
   @Post()
   create(@Req() req, @Body() dto: CreateCategoryDto) {
-    return this.categoriesService.create(dto.userId, dto);
+    return this.categoriesService.create(req.user.id, dto);
   }
 
   @Get()

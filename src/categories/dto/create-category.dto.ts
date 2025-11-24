@@ -9,7 +9,4 @@ export class CreateCategoryDto {
   @IsNotEmpty()
   color: string;
 
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
 }

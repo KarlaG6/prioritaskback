@@ -14,10 +14,9 @@ export class CategoriesService {
 
   async create(userId: string, dto: CreateCategoryDto): Promise<Category> {
     try {
-      return await this.repo.create({
+      return await this.repo.create(userId, {
         name: dto.name,
         color: dto.color,
-        userId: userId,
       });
     } catch (error) {
       console.error('Error en CategoryService.create:', error);
@@ -38,7 +37,9 @@ export class CategoriesService {
       return await this.repo.getTasksByCategory(userId);
     } catch (error) {
       console.error('Error fetching tasks by categories by user:', error);
-      throw new InternalServerErrorException('Error obteniendo tareas por categorías');
+      throw new InternalServerErrorException(
+        'Error obteniendo tareas por categorías',
+      );
     }
   }
 

@@ -12,16 +12,13 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 export class CategoriesRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateCategoryDto): Promise<Category> {
+  async create(userId: string, data: CreateCategoryDto): Promise<Category> {
     try {
-      if (!data.userId) {
-        throw new BadRequestException('El userId es obligatorio');
-      }
-      const userExists = await this.prisma.user.findUnique({
-        where: { id: data.userId },
-      });
-      if (!userExists) throw new NotFoundException('Usuario no encontrado');
-      return this.prisma.category.create({ data });
+      return this.prisma.category.create({ data: {
+        name: data.name,
+        color: data.color,
+        user: { connect: { id: userId } },
+      } });
     } catch (error) {
       console.error('Error creating category:', error);
       throw new InternalServerErrorException('Error creando la categoría');
