@@ -31,7 +31,8 @@ export class TaskRepository {
           status: 'pending',
           priority: dto.priority ?? 'medium',
           dueDate: dto.dueDate ? new Date(dto.dueDate) : null,
-          user: { connect: { id: userId } },
+          categoryId: dto.categoryId ?? null,
+          userId: userId,
         },
       });
     } catch (error) {

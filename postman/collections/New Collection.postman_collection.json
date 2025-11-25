@@ -605,11 +605,81 @@
           ]
         }
       }
+    },
+    {
+      "name": "categories",
+      "id": "e65efca0-deda-47bd-8fa5-65bf7b91c2c8",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3001/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "categories"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "tasks by category",
+      "id": "661a1151-4b94-4cd7-a34a-f46cbb44b806",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3001/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "categories"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      }
     }
   ],
   "variable": [
     {
-      "id": "786dd947-fb3b-40da-b2be-fdf7d1d36a51",
+      "id": "080f80a5-8974-4632-8f8a-e89aae9e2720",
       "key": "token",
       "value": "",
       "type": "default"
