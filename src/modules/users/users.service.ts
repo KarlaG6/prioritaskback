@@ -7,7 +7,7 @@ import { PrismaService } from 'prisma/prisma.service';
 export class UserService {
   constructor(
     private prisma: PrismaService,
-    private jwt: JwtService
+    private jwt: JwtService,
   ) {}
 
   async register(data: { name: string; email: string; password: string }) {
@@ -47,7 +47,14 @@ export class UserService {
       role: user.role,
     });
 
-    return { token };
+    return {
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        onboarded: user.onboarded,
+      },
+    };
   }
 
   async profile(id: string) {

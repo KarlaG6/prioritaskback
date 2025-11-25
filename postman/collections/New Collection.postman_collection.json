@@ -675,11 +675,77 @@
           ]
         }
       }
+    },
+    {
+      "name": "http://localhost:3001/onboarding",
+      "id": "fdbb9f91-0c11-4291-be9d-a8363ecb0720",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NGM2YTI4Zi1mOGM4LTRhYWItYTRhYS0yMzgxOGQwNDBiMjciLCJlbWFpbCI6ImthcmxhQGV4YW1wbGUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjM5MzY3MzgsImV4cCI6MTc2NDU0MTUzOH0.-wofLI4uUTyBcRzFl8OodtxLUZ0VFpQppgJ4gXZdV-k",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"roles\":[\"estudiante\",\"mascotas\"]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/onboarding",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "onboarding"
+          ]
+        }
+      }
+    },
+    {
+      "name": "http://localhost:3001/onboarding/complete",
+      "id": "d6fce93a-8996-404c-bf29-7566e09835a8",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NGM2YTI4Zi1mOGM4LTRhYWItYTRhYS0yMzgxOGQwNDBiMjciLCJlbWFpbCI6ImthcmxhQGV4YW1wbGUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjM5MzY3MzgsImV4cCI6MTc2NDU0MTUzOH0.-wofLI4uUTyBcRzFl8OodtxLUZ0VFpQppgJ4gXZdV-k",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "url": {
+          "raw": "http://localhost:3001/onboarding/complete",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "onboarding",
+            "complete"
+          ]
+        }
+      }
     }
   ],
   "variable": [
     {
-      "id": "080f80a5-8974-4632-8f8a-e89aae9e2720",
+      "id": "8357e925-476a-473f-84e3-2bcf30cde732",
       "key": "token",
       "value": "",
       "type": "default"

@@ -7,6 +7,7 @@ import { TasksModule } from './tasks/tasks.module';
 import { CategoriesModule } from './categories/categories.module';
 import { RemindersModule } from './reminders/reminders.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { OnboardingModule } from './onboarding/onboarding.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { NotificationsModule } from './notifications/notifications.module';
     CategoriesModule,
     RemindersModule,
     NotificationsModule,
+    OnboardingModule,
   ],
   providers: [JwtStrategy],
 })
