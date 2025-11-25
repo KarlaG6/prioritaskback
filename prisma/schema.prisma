@@ -13,6 +13,7 @@ model User {
   email         String           @unique
   password      String
   role          Role             @default(USER)
+  onboarded     Boolean          @default(false)
   tasks         Task[]
   categories    Category[]
   reminders     Reminder[]
